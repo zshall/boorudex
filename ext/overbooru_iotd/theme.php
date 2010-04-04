@@ -13,13 +13,18 @@ class OverbooruIOTDTheme extends Themelet {
         /**
          * Displaying the page:
          */
+		if($total_pages == 0) {
+			$page->set_title("No images");
+			$page->set_heading("No images");
+			$page->add_block(new Block("No images", "No images to display. Come back later!", "main", 10));
+		} else {
+        	$title = "Overbooru IOTD";
         
-        $title = "Overbooru IOTD";
-        
-        $page->set_title($title);
-        $page->set_heading($title);
-        $this->generate_index($image);
-        $this->display_paginator($page, "iotd/index", null, $page_number, $total_pages);
+        	$page->set_title($title);
+        	$page->set_heading($title);
+        	$this->generate_index($image);
+        	$this->display_paginator($page, "iotd/index", null, $page_number, $total_pages);
+		}
     }
     public function show_submit($thanks) {
         global $page;
