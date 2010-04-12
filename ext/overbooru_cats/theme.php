@@ -463,7 +463,17 @@ class OverbooruCatsTheme extends Themelet {
 	 */
 	public function show_disclaimer() {
 		global $page;
-		$html = "<b>The Overbooru</b>
+		$html = "<html><head><title>Disclaimer</title>
+		<link rel='stylesheet' href='/ext/overbooru_cats/style.css' type='text/css'>
+		<script src='/lib/jquery-1.3.2.min.js' type='text/javascript'></script> 
+		<script src='/lib/jquery.auto-complete.pack.js' type='text/javascript'></script> 
+		<script src='/lib/jquery.cookie.js' type='text/javascript'></script> 
+		<script src='/lib/jquery.form-defaults.js' type='text/javascript'></script> 
+		<script src='/lib/jquery.tablesorter.min.js' type='text/javascript'></script> 
+		</head>
+		<body>
+			<br /><br /><br />
+			<b>The Overbooru</b>
 			<p style='font-size:0.6em;'> 
 			<b>Disclaimer</b> 
 			<br> 
@@ -475,8 +485,10 @@ class OverbooruCatsTheme extends Themelet {
 			<a href='".make_link('menu/index')."'>(continue)</a> 
 			 
 			</p>
+		</body>
+		</html>
 		";
-		$page->set_title("Disclaimer");
-		$page->add_block(new block(NULL, $html, "main", 5));
+		$page->set_mode("data");
+		$page->set_data($html);
 	}
 }
