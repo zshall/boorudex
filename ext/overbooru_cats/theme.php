@@ -65,11 +65,14 @@ class OverbooruCatsTheme extends Themelet {
 		<script src='/lib/jquery.tablesorter.min.js' type='text/javascript'></script> 
 		</head>
 		<body>
+		
 		$disclaimer
+		
 		<div class='container'><span style='font-size:13px; font-weight:bold;'>The Overbooru</span><br />
 		<a href='/news' target='main'>News</a><br />
 		<a href='/iotd/index' target='main'>IOTD</a><br />
 		<a href='http://twitter.com/overbooru' target='main'>Twitter</a><br />
+		<a href='/forum' target='main'>Forum</a><br />
 		<a href='/menu/submit' target='main'>Submit</a><br /><br /></div>
 		" . $cats_html . "</body></html>";
 		return $html;
@@ -79,7 +82,7 @@ class OverbooruCatsTheme extends Themelet {
 		$cat_list = "";
 		if(count($boorus) == 0) return;
 		for($i=0;$i<count($boorus);$i++) {
-			$cat_list .= "<a href='".$boorus[$i]["booru_url"]."' target='main'>".$boorus[$i]["booru_name"]."</a><br />";
+			$cat_list .= "<a href='".make_link("go/".$boorus[$i]["id"])."' target='main'>".$boorus[$i]["booru_name"]."</a><br />";
 		}
 		if($sub_style == true) { $header = 'header_main'; $end_html = "</div></div>"; } else { $header = 'header_main'; $end_html = ""; }
 		$cat_title = $this->toggle_html($cat_id) . "<div class='container'><div id='c$cat_id-toggle' class='$header'>$cat_name</div>";
