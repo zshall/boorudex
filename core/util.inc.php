@@ -475,6 +475,14 @@ define("SCORE_LOG_INFO", 20);
 define("SCORE_LOG_DEBUG", 10);
 define("SCORE_LOG_NOTSET", 0);
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+* Notify priorities                                                        *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+define("SCORE_NOTIFY_IMPORTANT", 50);
+define("SCORE_NOTIFY_GENERAL", 10);
+define("SCORE_NOTIFY_NOTSET", 0);
+
 /**
  * A shorthand way to send a LogEvent
  */
