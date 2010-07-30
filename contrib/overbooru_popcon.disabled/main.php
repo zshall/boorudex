@@ -1,6 +1,6 @@
 <?php
 /**
-* Name: Overbooru Popularity Contest
+* Name: Overbooru Popularity Contest (under construction)
 * Author: Zach Hall <zach@sosguy.net>
 * Link: http://seemslegit.com
 * License: GPLv2

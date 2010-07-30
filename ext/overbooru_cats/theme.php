@@ -82,7 +82,7 @@ class OverbooruCatsTheme extends Themelet {
 		$cat_list = "";
 		if(count($boorus) == 0) return;
 		for($i=0;$i<count($boorus);$i++) {
-			$cat_list .= "<a href='".make_link("go/".$boorus[$i]["id"])."' target='main'>".$boorus[$i]["booru_name"]."</a><br />";
+			$cat_list .= "<a href='".$boorus[$i]["booru_url"]."' target='main'>".$boorus[$i]["booru_name"]."</a><br />";
 		}
 		if($sub_style == true) { $header = 'header_main'; $end_html = "</div></div>"; } else { $header = 'header_main'; $end_html = ""; }
 		$cat_title = $this->toggle_html($cat_id) . "<div class='container'><div id='c$cat_id-toggle' class='$header'>$cat_name</div>";
