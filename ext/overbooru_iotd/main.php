@@ -169,10 +169,12 @@ class OverbooruIOTD extends SimpleExtension {
 	}
 	
     public function onUserBlockBuilding($event) {
-        global $user;
+        global $user, $database;
 		$event->add_link("Submit IOTD", make_link("iotd/submit"));
         if($user->is_admin()) {
-                $event->add_link("Manage IOTD", make_link("iotd/manage"));
+				$new_iotd = $database->get_row("SELECT COUNT(*) FROM iotd WHERE approved = ?", array("N"));
+				if($new_iotd['COUNT(*)'] > 0) {$c = " (".$new_iotd['COUNT(*)'].")";} else {$c = "";}
+                $event->add_link("Manage IOTD$c", make_link("iotd/manage"));
         }
     }
 }

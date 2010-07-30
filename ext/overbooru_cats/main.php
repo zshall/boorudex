@@ -259,11 +259,14 @@ class OverbooruCats extends SimpleExtension {
 	}
 	
     public function onUserBlockBuilding($event) {
-        global $user;
+        global $user, $database;
 		//$event->add_link("Booru Menu", make_link("menu/index"));
 		$event->add_link("Submit a Booru", make_link("menu/submit"));
         if($user->is_admin()) {
-                $event->add_link("Manage Boorus", make_link("menu/manage/boorus"));
+				$new_boorus = $database->get_row("SELECT COUNT(*) FROM boorus WHERE approved = ?", array("N"));
+				//print_r($new_boorus);
+				if($new_boorus['COUNT(*)'] > 0) {$c = " (".$new_boorus['COUNT(*)'].")";} else {$c = "";}
+                $event->add_link("Manage Boorus$c", make_link("menu/manage/boorus"));
 				$event->add_link("Manage Categories", make_link("menu/manage/cats"));
         }
     }
