@@ -478,7 +478,7 @@ class OverbooruCatsTheme extends Themelet {
 		<body>
 			<br /><br /><br />
 			<b>The Overbooru</b>
-			<p style='font-size:0.6em;'> 
+			<p style='font-size:0.7em;'> 
 			<b>Disclaimer</b> 
 			<br> 
 			 
