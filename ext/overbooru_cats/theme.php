@@ -69,11 +69,12 @@ class OverbooruCatsTheme extends Themelet {
 		$disclaimer
 		
 		<div class='container'><span style='font-size:13px; font-weight:bold;'>The Overbooru</span><br />
-		<a href='/news' target='main'>News</a><br />
-		<a href='/iotd/index' target='main'>IOTD</a><br />
+		<a href='".make_link("news")."' target='main'>News</a><br />
+		<a href='".make_link("iotd/index")."' target='main'>IOTD</a><br />
 		<a href='http://twitter.com/overbooru' target='main'>Twitter</a><br />
-		<a href='/forum' target='main'>Forum</a><br />
-		<a href='/menu/submit' target='main'>Submit</a><br /><br /></div>
+		<a href='".make_link("forum")."' target='main'>Forum</a><br />
+		<a href='".make_link("menu/submit")."' target='main'>Submit</a><br />
+		<a href='".make_link("booru_exchange")."' target='main'>Booru Exchange</a><br /><br /></div>
 		" . $cats_html . "</body></html>";
 		return $html;
     }
