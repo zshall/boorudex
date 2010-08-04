@@ -349,8 +349,7 @@ class OverbooruBannerExchange extends SimpleExtension {
 	private function remove($booru_id, $database) {
 		assert(is_numeric($booru_id));
 		$booru_id = int_escape($booru_id);
-		$database->Execute("DELETE FROM boorus WHERE id=?", array($booru_id));
-		die($booru_id);
+		$database->Execute("DELETE FROM `banner_exchange` WHERE `booru_id` = ?", array($booru_id));
 		log_info("overbooru_banner_exchange", "Removed booru #$booru_id");
 	}
 	private function reset_stats($database) {
