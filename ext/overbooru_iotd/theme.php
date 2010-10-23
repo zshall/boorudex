@@ -186,7 +186,7 @@ class OverbooruIOTDTheme extends Themelet {
             $clean_date = date("m/d/y", strtotime($timestamp));
             
 		   $body = "<div class='iotd-body'><span style='font-size:1.1em; font-weight:bold;'>Random Image of the Day</span><br /><br />
-		   		<a href='$image_source'><img src='$image_url'/></a><br /><br />
+		   		<a href='$image_source'><img id='iotd-image' src='$image_url' /></a><br /><br />
                 <span class='iotd-header'>Submitted by {$user->name} on $clean_date<br /><br />[<a href='".make_link('rss/iotd')."'>RSS Feed</a>] [<a href='".make_link('iotd/submit')."'>Suggest an image</a>]</span>
                 </div>
             ";

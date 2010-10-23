@@ -111,7 +111,7 @@ class OverbooruIOTD extends SimpleExtension {
 					if($user->is_admin()) {
                             $id = int_escape($_POST['id']);
                             if(!isset($_POST['id'])) { die("No ID!"); }
-                            $database->Execute("UPDATE `iotd` SET `approved` = ? WHERE `iotd`.`id` = ? LIMIT 1;", array("Y", $id));
+                            $database->Execute("UPDATE `iotd` SET `approved` = ?, `timestamp` = now() WHERE `iotd`.`id` = ? LIMIT 1;", array("Y", $id));
                             log_info("overbooru_menu", "Approved booru #$id");
                             $page->set_mode("redirect");
                             $page->set_redirect(make_link("iotd/manage"));
