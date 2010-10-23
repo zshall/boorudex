@@ -36,10 +36,10 @@ class RSS_IOTD extends SimpleExtension {
 				$image_source = $iotd['image_source'];
 				
 				$posted = date(DATE_RSS, $iotd['posted_timestamp']);
-				$clean_date = date("m/d/y", strtotime($posted));
+				$clean_date = strtolower(date("d-F-Y", strtotime($posted)));
 				$data .= "
 					<item>
-						<title>$clean_date - $image_source</title>
+						<title>$clean_date: $image_source</title>
 						<link>$image_source</link>
 						<guid isPermaLink=\"false\">$id</guid>
 						<pubDate>$posted</pubDate>
