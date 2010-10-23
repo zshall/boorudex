@@ -203,9 +203,10 @@ class OverbooruBannerExchange extends SimpleExtension {
 							$booru_to_display['booru_name'] = $config->get_string("banner_default_name");
 							$booru_to_display['booru_url'] = $config->get_string("banner_default_url");
 							$booru_to_display['booru_img'] = $config->get_string("banner_default_img");
-							if($log_this == true) $this->log_impression($booru_id_exclude, $ratio, $config, $database);
+							if($log_this == true) $this->earn_impression($booru_id_exclude, $ratio, $config, $database);
 						} else {
 							if($log_this == true) $this->balance_stats($booru_id_exclude, $booru_to_display, $ratio, $database);
+							else $this->spend_impression($booru_to_display, $ratio, $config, $database);
 						}
 						$this->theme->display_banner($page, $booru_to_display, $width, $height);
 					}
@@ -362,8 +363,11 @@ class OverbooruBannerExchange extends SimpleExtension {
 		$database->Execute("UPDATE banner_exchange SET i_sent = i_sent + 1, c_earn = (i_sent*$ratio), c_left = (c_left+$ratio) WHERE booru_id = ?",array($booru_id_exclude));
 		$database->Execute("UPDATE banner_exchange SET c_left = c_left-1, i_recv = i_recv + 1 WHERE booru_id = ?",array($booru_to_display['booru_id']));
 	}
-	private function log_impression($booru_id, $ratio, $config, $database) {
+	private function earn_impression($booru_id, $ratio, $config, $database) {
 		$database->Execute("Update banner_exchange SET i_sent = i_sent + 1, c_earn = (i_sent*$ratio), c_left = (c_left+$ratio) WHERE booru_id = ?",array($booru_id));
+	}
+	private function spend_impression($booru_to_display, $ratio, $config, $database) {
+		$database->Execute("UPDATE banner_exchange SET c_left = c_left-1, i_recv = i_recv + 1 WHERE booru_id = ?",array($booru_to_display['booru_id']));
 	}
 	private function log_click($booru_id, $database) {
 		$database->Execute("UPDATE banner_exchange SET clicks = clicks+1 WHERE booru_id = ?",array($booru_id));
